@@ -4,7 +4,7 @@
 
 ## Usage
 
-1. `meteor add dandv:jquery-rateit`
+1. `meteor add muriloventuroso:jquery-rateit`
 2. For the simplest invocation, have `<div class="rateit"></div>` in a template, and call `$('.rateit').rateit()` in its `.rendered()` event. To make sure the rating control is always instantiated, it's best to limit the template to that div alone:
 
 ```html
@@ -18,7 +18,12 @@
   <div class="rateit"></div>
 </template>
 ```
-
+The size can be set to 32px as follows:
+```html
+<template name="rating">
+  <div data-rateit-starwidth="32" data-rateit-starheight="32" class="rateit bigstars"></div>
+</template>
+```
 And have the initialization done in the `rendered` event of the `rating` template:
 
 ```js
@@ -78,10 +83,10 @@ Anyway, none of these mentioned browser compatibility or touch support. RateIt d
 > Why is RateIt different
 
 > Although it does the same job as the rest of the jQuery star rating plugins, the main difference is its simplicity.
-Most plugins create an element for each (partial) star, be it a div with a star background, or an img tag. 
+Most plugins create an element for each (partial) star, be it a div with a star background, or an img tag.
 Each of these tags gets a hover event, and a click event. And on these hover/click events it has to go and talk to the other stars, telling them to change their state.
 
-> So each star plugin does a lot of DOM alterations (adding the number of stars as elements), and adds lots of events (again the number of stars times 2). 
+> So each star plugin does a lot of DOM alterations (adding the number of stars as elements), and adds lots of events (again the number of stars times 2).
 
 > RateIt uses basically three divs.
 
