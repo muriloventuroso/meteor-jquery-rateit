@@ -5,38 +5,20 @@
 ## Usage
 
 1. `meteor add muriloventuroso:jquery-rateit`
-2. For the simplest invocation, have `<div class="rateit"></div>` in a template, and call `$('.rateit').rateit()` in its `.rendered()` event. To make sure the rating control is always instantiated, it's best to limit the template to that div alone:
+2. Use the template rateit with variables: starwidth, starheight, step, resetable, backingfld, value,min, max, value, readonly, bigstars. bigstar is for use stars with 32px
 
 ```html
 <template name="hello">
   {{#if currentUser}}
-    Rating: {{> rating}}
+    Rating: {{> rateit value='5' bigstars='true' readonly='true' resetable='true' starwidth='32' starheight='32'}}
   {{/if}}  
 </template>
 
-<template name="rating">
-  <div class="rateit"></div>
-</template>
-```
-The size can be set to 32px as follows:
-```html
-<template name="rating">
-  <div data-rateit-starwidth="32" data-rateit-starheight="32" class="rateit bigstars"></div>
-</template>
-```
-And have the initialization done in the `rendered` event of the `rating` template:
-
-```js
-// .rateit elements need to be progressively enhanced after they're created
-Template.rating.rendered = function () {
-  this.$('.rateit').rateit();
-}
 ```
 
 ## Demo
 
 * [Official demo](http://www.radioactivethinking.com/rateit/example/example.htm)
-* [meteor demo](http://jquery-rateit.meteor.com) ([source code](https://github.com/dandv/meteor-jquery-rateit-demo))
 
 ## Documentation
 
@@ -47,8 +29,6 @@ http://rateit.codeplex.com/documentation
 Check out [the examples](http://rateit.codeplex.com) for more styles than stars (antenna bars etc.)
 
 ## Comparison with other rating plugins
-
-In Nov. 2012, while [looking for a star rating plugin](http://stackoverflow.com/questions/4542883/jquery-star-rating/13176213#13176213) to package for Meteor, I evaluated all the 11 jQuery rating plugins listed [here](http://www.enfew.com/5-best-jquery-star-rating-plugins-tutorials/). The winner was, by far, [RateIt](http://rateit.codeplex.com/).
 
 > Fast, Progressive enhancement, touch support, customizable (just swap out the images, or change some CSS), Unobtrusive JavaScript (using HTML5 data-* attributes), RTL support, supports as many stars as you'd like, and also any step size.
 
@@ -91,11 +71,6 @@ Each of these tags gets a hover event, and a click event. And on these hover/cli
 > RateIt uses basically three divs.
 
 Oh, and the last RateIt update? **The day before I packaged this.**
-
-## TODO
-
-* Handlebars helper (like [`accounts-ui-unstyled`](https://github.com/meteor/meteor/tree/master/packages/accounts-ui-unstyled)) passing through options such as `min`, `max`, `step`, `readonly` etc.
-* Mixin to automatically associate a rating with a document
 
 ## Author, license and copyright
 
